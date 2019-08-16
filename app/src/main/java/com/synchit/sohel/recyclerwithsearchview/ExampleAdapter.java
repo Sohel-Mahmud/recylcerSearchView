@@ -38,7 +38,7 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
 
     @Override
     public void onBindViewHolder(@NonNull ExampleViewHolder exampleViewHolder, int i) {
-        ExampleItem currentItem = exampleList.get(i);
+        final ExampleItem currentItem = exampleList.get(i);
         final int currentPos = i;
         exampleViewHolder.textView1.setText(currentItem.getText1());
         exampleViewHolder.textView2.setText(currentItem.getText2());
@@ -48,7 +48,10 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //pass your currentItem through intent or Bundle or using interface
+
                 Toast.makeText(context, String.valueOf(currentPos), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, currentItem.getText1()+"\n"+currentItem.getText2(), Toast.LENGTH_SHORT).show();
             }
         });
     }
